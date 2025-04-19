@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="RestaurantPOS.Views.TakeawayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <!-- Unified Menu Area -->
+            <ColumnDefinition Width="2*"/>
+            <!-- Action Buttons and Orders -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Takeaway Orders"
+                   Grid.Row="0" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Margin="0,10"/>
+
+        <!-- Menu Area -->
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <!-- Main Items -->
+                <RowDefinition Height="1*"/>
+                <!-- Sub Items -->
+            </Grid.RowDefinitions>
+
+            <!-- Main Menu Items -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10" Grid.Row="0">
+                <Button Content="Item 1" Width="100" Margin="5" Click="Item1_Click"/>
+                <Button Content="Item 2" Width="100" Margin="5"/>
+                <Button Content="Item 3" Width="100" Margin="5"/>
+            </StackPanel>
+
+            <!-- Sub Items (will be shown dynamically) -->
+            <StackPanel x:Name="SubItemsPanel" Grid.Row="1" Orientation="Vertical" Margin="10">
+                <!-- Dynamically generated sub-items go here -->
+            </StackPanel>
+        </Grid>
+
+        <!-- Action Buttons + Pending Orders -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Top">
+            <TextBlock Text="Actions" FontSize="20" FontWeight="Bold" Margin="0 0 0 10"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Add Order" Grid.Row="0" Grid.Column="0" Margin="5" Height="35"/>
+                <Button Content="Print Invoice" Grid.Row="0" Grid.Column="1" Margin="5" Height="35"/>
+                <Button Content="Print Order" Grid.Row="1" Grid.Column="0" Margin="5" Height="35"/>
+                <Button Content="Cash Out" Grid.Row="1" Grid.Column="1" Margin="5" Height="35"/>
+            </Grid>
+
+            <!-- Pending Orders -->
+            <TextBlock Text="Pending Orders" FontSize="16" FontWeight="Bold" Margin="0,20,0,5"/>
+            <ListBox Height="150" Width="250">
+                <ListBoxItem Content="Order #001 - 2x Item1"/>
+                <ListBoxItem Content="Order #002 - 1x Item2"/>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

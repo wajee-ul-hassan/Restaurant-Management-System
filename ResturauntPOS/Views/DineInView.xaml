@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="RestaurantPOS.Views.DineInView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <!-- Menu Area -->
+            <ColumnDefinition Width="2*"/>
+            <!-- Actions + Tables -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Dine-In Orders"
+                   Grid.Row="0" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Margin="0,10"/>
+
+        <!-- Menu Section (Left Side) -->
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <!-- Main Menu -->
+                <RowDefinition Height="1*"/>
+                <!-- Sub Items -->
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+                <Button Content="Item 1" Width="100" Margin="5" Click="Item1_Click"/>
+                <Button Content="Item 2" Width="100" Margin="5"/>
+                <Button Content="Item 3" Width="100" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel x:Name="SubItemsPanel" Grid.Row="1" Margin="5"/>
+        </Grid>
+
+        <!-- Right Section -->
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Buttons -->
+                <RowDefinition Height="*"/>
+                <!-- Table List & Pending Orders -->
+            </Grid.RowDefinitions>
+
+            <!-- Buttons -->
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                <TextBlock Text="Actions" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Content="Add Order" Grid.Row="0" Grid.Column="0" Margin="5" Height="35"/>
+                    <Button Content="Print Invoice" Grid.Row="0" Grid.Column="1" Margin="5" Height="35"/>
+                    <Button Content="Print Order" Grid.Row="1" Grid.Column="0" Margin="5" Height="35"/>
+                    <Button Content="Cash Out" Grid.Row="1" Grid.Column="1" Margin="5" Height="35"/>
+                </Grid>
+            </StackPanel>
+
+            <!-- Table List + Pending Orders -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Table List -->
+                <StackPanel Grid.Column="0" Margin="5">
+                    <TextBlock Text="Tables" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <ListBox>
+                        <ListBoxItem Content="Table 1"/>
+                        <ListBoxItem Content="Table 2"/>
+                        <ListBoxItem Content="Table 3"/>
+                        <ListBoxItem Content="Table 4"/>
+                        <ListBoxItem Content="Table 5"/>
+                    </ListBox>
+                </StackPanel>
+
+                <!-- Pending Orders -->
+                <StackPanel Grid.Column="1" Margin="5">
+                    <TextBlock Text="Pending Orders" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <ListBox>
+                        <ListBoxItem Content="Table 1 - 2x Item1"/>
+                        <ListBoxItem Content="Table 3 - 1x Item3"/>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
